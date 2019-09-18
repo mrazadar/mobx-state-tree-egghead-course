@@ -20,10 +20,7 @@ const wishList = WishList.create({
         }
     ]
 })
-
-setInterval(() => {
-    wishList.items[0].changePrice(wishList.items[0].price+1)
-}, 1000)
+ 
 
 ReactDOM.render(<App wishList={wishList}/>, document.getElementById('root'));
 
