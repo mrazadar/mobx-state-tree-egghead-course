@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can also add item in the WishList - patches 1`] = `
+Array [
+  Object {
+    "op": "add",
+    "path": "/items/0",
+    "value": Object {
+      "image": "https://github.com/mobxjs/mobx-state-tree/blob/master/docs/mobx-state-tree-logo-gradient.png",
+      "name": "Chronicales of Narnia Box Set - C.S. Lewis",
+      "price": 28.73,
+    },
+  },
+  Object {
+    "op": "add",
+    "path": "/items/1",
+    "value": Object {
+      "image": "",
+      "name": "Monogram",
+      "price": 23,
+    },
+  },
+  Object {
+    "op": "replace",
+    "path": "/items/1/price",
+    "value": 72.15,
+  },
+]
+`;
+
+exports[`can also add item in the WishList 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "image": "https://github.com/mobxjs/mobx-state-tree/blob/master/docs/mobx-state-tree-logo-gradient.png",
+      "name": "Chronicales of Narnia Box Set - C.S. Lewis",
+      "price": 28.73,
+    },
+    Object {
+      "image": "",
+      "name": "Monogram",
+      "price": 72.15,
+    },
+  ],
+}
+`;
+
+exports[`can also add item in the WishList 2`] = `
+Array [
+  Object {
+    "items": Array [
+      Object {
+        "image": "https://github.com/mobxjs/mobx-state-tree/blob/master/docs/mobx-state-tree-logo-gradient.png",
+        "name": "Chronicales of Narnia Box Set - C.S. Lewis",
+        "price": 28.73,
+      },
+    ],
+  },
+  Object {
+    "items": Array [
+      Object {
+        "image": "https://github.com/mobxjs/mobx-state-tree/blob/master/docs/mobx-state-tree-logo-gradient.png",
+        "name": "Chronicales of Narnia Box Set - C.S. Lewis",
+        "price": 28.73,
+      },
+      Object {
+        "image": "",
+        "name": "Monogram",
+        "price": 23,
+      },
+    ],
+  },
+  Object {
+    "items": Array [
+      Object {
+        "image": "https://github.com/mobxjs/mobx-state-tree/blob/master/docs/mobx-state-tree-logo-gradient.png",
+        "name": "Chronicales of Narnia Box Set - C.S. Lewis",
+        "price": 28.73,
+      },
+      Object {
+        "image": "",
+        "name": "Monogram",
+        "price": 72.15,
+      },
+    ],
+  },
+]
+`;
+
+exports[`can also add item in the WishList 3`] = `
+Array [
+  Object {
+    "op": "add",
+    "path": "/items/0",
+    "value": Object {
+      "image": "https://github.com/mobxjs/mobx-state-tree/blob/master/docs/mobx-state-tree-logo-gradient.png",
+      "name": "Chronicales of Narnia Box Set - C.S. Lewis",
+      "price": 28.73,
+    },
+  },
+  Object {
+    "op": "add",
+    "path": "/items/1",
+    "value": Object {
+      "image": "",
+      "name": "Monogram",
+      "price": 23,
+    },
+  },
+  Object {
+    "op": "replace",
+    "path": "/items/1/price",
+    "value": 72.15,
+  },
+]
+`;
