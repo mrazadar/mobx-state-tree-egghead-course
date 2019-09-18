@@ -1,4 +1,4 @@
-import { types } from "mobx-state-tree"
+import { types, getParent, destroy } from "mobx-state-tree"
 
 export const data = {
     "name": "Chronicales of Narnia Box Set - C.S. Lewis",
@@ -21,6 +21,9 @@ export const WishListItem = types
         },
         changeImage(img){
             self.image = img
+        },
+        remove(){
+            getParent(self, 2).remove(self)
         }
     }));
 
@@ -31,6 +34,10 @@ export const WishList = types
     .actions(self => ({
         addItem(item) {
             self.items.push(item)
+        },
+        remove(item){
+            // self.items.splice(self.items.indexOf(item), 1)
+            destroy(item)
         }
     }))
     .views(self => ({

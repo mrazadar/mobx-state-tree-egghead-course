@@ -20,6 +20,7 @@ class WishListItemView extends Component {
                 <span>{item.price}</span>
                 <span>
                     <button onClick={this.toggleEdit}>Edit</button>
+                    <button onClick={item.remove}>Delete</button>
                 </span>
             </div>
         )
