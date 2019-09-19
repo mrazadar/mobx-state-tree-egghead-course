@@ -29,6 +29,7 @@ class App extends React.Component {
           }
         </select>
         { selectedUser && <WishListView wishList={selectedUser.wishList}/> }
+        { selectedUser && <button onClick={selectedUser.getSuggestions}> Suggestions </button> }
       </div>
     )
   }
