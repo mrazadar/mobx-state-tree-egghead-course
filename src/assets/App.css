@@ -30,11 +30,18 @@
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: 5px;  
+  width:100%;
   
 }
 .item{
   border: 1px solid brown;
   padding: 5px;
+  width:100%;
+}
+
+.item img {
+  width: 50px;
+  height: 50px
 }
 
 @keyframes App-logo-spin {
