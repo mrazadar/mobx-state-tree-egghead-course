@@ -7,37 +7,37 @@ import * as serviceWorker from './serviceWorker';
 
 import { getSnapshot } from 'mobx-state-tree';
 
-import { WishList } from "./models/WishList";
+import { Group } from "./models/Group";
 
 import logo from './assets/logo.svg'
 
 let initialState = {
-    items: [
-        {
-            "name": "Chronicales of Narnia Box Set - C.S. Lewis",
-            "price": 28.73, 
-            "image": logo
+    users: {
+        "1": {
+            "id": "1",
+            "name": "Gulu Butt", 
+            "gender": 'm'
         }, 
-        {
-            "name": "LEGO Mindstorms EV3",
-            "price": 349.95, 
-            "image": logo
+        "2": {
+            "id": "2",
+            "name": "Shakira Niki", 
+            "gender": 'f'
         }
-    ]
+    }
 }
 
 
 if(localStorage.getItem("wishListApp")){
     const json = JSON.parse(localStorage.getItem("wishListApp"))
     //check if the shape of data still valid for localStorage data
-    if(WishList.is(json)) initialState = json
+    if(Group.is(json)) initialState = json
 }
 
-let wishList = WishList.create(initialState)
+let state = Group.create(initialState)
 
 
 function renderApp (){
-    ReactDOM.render(<App wishList={wishList}/>, document.getElementById('root'));
+    ReactDOM.render(<App group={state}/>, document.getElementById('root'));
 }
 
 renderApp()
@@ -50,8 +50,14 @@ if (module.hot){
 
     module.hot.accept(["./models/WishList"], () => {
         //new model definition
-        const snapshot = getSnapshot(wishList)
-        wishList = WishList.create(snapshot)
+        const snapshot = getSnapshot(state)
+        state = Group.create(snapshot)
+        renderApp()
+    })
+    module.hot.accept(["./models/Group"], () => {
+        //new model definition
+        const snapshot = getSnapshot(state)
+        state = Group.create(snapshot)
         renderApp()
     })
 }
