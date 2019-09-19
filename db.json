@@ -1,0 +1,26 @@
+{
+    "suggestion_f": [
+        {
+            "name": "The Notebook",
+            "price": 10.30,
+            "image": ""
+        },
+        {
+            "name": "LEGO Mindstorms EV3",
+            "price": 349.95,
+            "image": ""
+        }
+    ],
+    "suggestion_m": [
+        {
+            "name": "Machine Gun Preacher",
+            "price": 7.63,
+            "image": ""
+        },
+        {
+            "name": "Motor Cycle Gaurds",
+            "price": 41.58,
+            "image": ""
+        }
+    ]
+}

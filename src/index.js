@@ -5,7 +5,7 @@ import './assets/index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-import { getSnapshot } from 'mobx-state-tree';
+import { getSnapshot, addMiddleware } from 'mobx-state-tree';
 
 import { Group } from "./models/Group";
 
@@ -35,6 +35,10 @@ if(localStorage.getItem("wishListApp")){
 
 let state = Group.create(initialState)
 
+addMiddleware(state, (call, next) => {
+    console.log(`[${call.type}] ${call.name}`)
+    return next(call)
+})
 
 function renderApp (){
     ReactDOM.render(<App group={state}/>, document.getElementById('root'));
