@@ -17,7 +17,7 @@ class WishListItemView extends Component {
             <div className="item">
                 {item.image && <img src={item.image} alt="img"/>}
                 <h3>{item.name}</h3>
-                <span>{item.price}</span>
+                <span> ${item.price}</span>
                 <span>
                     <button onClick={this.toggleEdit}>Edit</button>
                     <button onClick={item.remove}>Delete</button>
