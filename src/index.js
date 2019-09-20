@@ -22,6 +22,16 @@ let initialState = {
             "id": "2",
             "name": "Shakira Niki", 
             "gender": 'f'
+        },
+        "3": {
+            "id": "3",
+            "name": "Jinki Tin", 
+            "gender": 'f'
+        },
+        "4": {
+            "id": "4",
+            "name": "Choker", 
+            "gender": 'm'
         }
     }
 }
