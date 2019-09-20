@@ -1,41 +1,31 @@
 //Group.js
-import { types, flow, applySnapshot, getSnapshot, onSnapshot } from 'mobx-state-tree'
+import { types, flow, applySnapshot } from 'mobx-state-tree'
 
 import { WishList } from './WishList'
+import { createStorable } from './Storable'
 
-export const User = types.model({
-    id: types.identifier, 
-    name: types.string, 
-    // gender: types.union(types.literal('m'), types.literal('f')),
-    gender: types.enumeration('gender', ['m', 'f']),
-    wishList: types.optional(WishList, {}),
-    //types.maybe recipient is either null or it's a type of user
-    //types.late at the time of the execution of this line const User =  / doesn't have assigned anything yet
-    //so we need to defer this statement 
-    recipient: types.maybe(types.reference(types.late(() => User)))
-})
-.actions(self => ({    
-    getSuggestions: flow(function * (){
-        const response = yield window.fetch(`http://localhost:3001/suggestion_${self.gender}`)
-        const suggestions = yield response.json()
-        self.wishList.items.push(...suggestions)        
-    }),
-    save: flow(function * (){
-        try{
-            yield window.fetch(`http://localhost:3001/users/${self.id}`,{
-                method: 'PUT',
-                headers: { "Content-Type" : "application/json" },
-                body: JSON.stringify(getSnapshot(self))
-            })
-        } catch(e){
-            console.log("Oh no. Failed to save", e)
-        }            
-    }),
-    afterCreate(){
-        onSnapshot(self, self.save)
-    }
-
-}))
+export const User = types.compose(
+    types
+    .model({
+        id: types.identifier, 
+        name: types.string, 
+        // gender: types.union(types.literal('m'), types.literal('f')),
+        gender: types.enumeration('gender', ['m', 'f']),
+        wishList: types.optional(WishList, {}),
+        //types.maybe recipient is either null or it's a type of user
+        //types.late at the time of the execution of this line const User =  / doesn't have assigned anything yet
+        //so we need to defer this statement 
+        recipient: types.maybe(types.reference(types.late(() => User)))
+    })
+    .actions(self => ({    
+        getSuggestions: flow(function * (){
+            const response = yield window.fetch(`http://localhost:3001/suggestion_${self.gender}`)
+            const suggestions = yield response.json()
+            self.wishList.items.push(...suggestions)        
+        })
+    })),
+    createStorable('users', 'id')
+)
 
 
 export const Group = types.model({
