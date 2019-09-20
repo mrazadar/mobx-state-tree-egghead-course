@@ -9,41 +9,20 @@ import { getSnapshot, addMiddleware } from 'mobx-state-tree';
 
 import { Group } from "./models/Group";
 
-import logo from './assets/logo.svg'
+// import logo from './assets/logo.svg'
 
-let initialState = {
-    users: {
-        "1": {
-            "id": "1",
-            "name": "Gulu Butt", 
-            "gender": 'm'
-        }, 
-        "2": {
-            "id": "2",
-            "name": "Shakira Niki", 
-            "gender": 'f'
-        },
-        "3": {
-            "id": "3",
-            "name": "Jinki Tin", 
-            "gender": 'f'
-        },
-        "4": {
-            "id": "4",
-            "name": "Choker", 
-            "gender": 'm'
-        }
-    }
-}
+let initialState = { users: {} }
 
 
-if(localStorage.getItem("wishListApp")){
-    const json = JSON.parse(localStorage.getItem("wishListApp"))
-    //check if the shape of data still valid for localStorage data
-    if(Group.is(json)) initialState = json
-}
+// if(localStorage.getItem("wishListApp")){
+//     const json = JSON.parse(localStorage.getItem("wishListApp"))
+//     //check if the shape of data still valid for localStorage data
+//     if(Group.is(json)) initialState = json
+// }
 
 let state = Group.create(initialState)
+
+window.state = state;
 
 addMiddleware(state, (call, next) => {
     console.log(`[${call.type}] ${call.name}`)
@@ -61,17 +40,12 @@ if (module.hot){
         //new component
         renderApp()
     })
-
-    module.hot.accept(["./models/WishList"], () => {
-        //new model definition
-        const snapshot = getSnapshot(state)
-        state = Group.create(snapshot)
-        renderApp()
-    })
+ 
     module.hot.accept(["./models/Group"], () => {
         //new model definition
         const snapshot = getSnapshot(state)
         state = Group.create(snapshot)
+        window.state = state;
         renderApp()
     })
 }
