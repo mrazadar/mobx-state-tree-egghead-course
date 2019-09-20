@@ -19,6 +19,7 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo"/>
           <h1 className="App-title">Learn MST </h1>
         </header>
+        <button onClick={group.reload}>Reload</button>
         <select onChange={this.onSelectUser}>
           <option> - Select User -</option>
           {
