@@ -35,11 +35,17 @@ export const Group = types.model({
         },
         load: flow(function*(){
             controller = window.AbortController && new window.AbortController()
-            const response = yield window.fetch(`http://localhost:3001/initial_state`, {
-                signal: controller.signal
-            })
-            const group = yield response.json()        
-            applySnapshot(self, group)
+            try{
+
+                const response = yield window.fetch(`http://localhost:3001/initial_state`, {
+                    signal: controller.signal
+                })
+                const group = yield response.json()        
+                applySnapshot(self, group)
+                console.log("success")
+            } catch( error ){
+                console.log('failed: ', error)
+            }
         }),
         reload(){
             if(controller) controller.abort()
